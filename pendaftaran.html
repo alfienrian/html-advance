@@ -49,9 +49,8 @@
         text-align: center;
         color: white;
       }
-      img {
-        width: 220px;
-        height: auto;
+      input {
+        margin: 10px 0;
       }
       @media (max-width: 680px) {
         nav,
@@ -64,7 +63,7 @@
   </head>
   <body>
     <header>
-      <h2>Gambar SVG HTML</h2>
+      <h2>Form Penjadwal Pertemuan</h2>
     </header>
 
     <section>
@@ -81,35 +80,54 @@
       </nav>
 
       <article>
-        <h1>SVG HTML</h1>
-        <svg width="100" height="100">
-          <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
-        </svg>
+        <h1>Form Penjadwal Pertemuan</h1>
+        <form action="/submit_form" method="post">
+          <fieldset>
+            <legend>Informasi Pribadi</legend>
+            <label for="nama">Nama</label>
+            <input type="text" name="nama" required /><br />
 
-        <svg width="100" height="100">
-          <rect width="400" height="100" style="fill: rgb(0, 0, 255); stroke-width: 10; stroke: rgb(0, 0, 0)" />
-        </svg>
+            <label for="notelp">No. Telepon</label>
+            <input type="tel" name="notelp" required /><br />
 
-        <svg width="100" height="100">
-          <rect
-            x="50"
-            y="20"
-            rx="20"
-            ry="20"
-            width="150"
-            height="150"
-            style="fill: red; stroke: black; stroke-width: 5; opacity: 0.5"
-          />
-        </svg>
+            <label for="email">Alamat Email</label>
+            <input type="email" name="email" required /><br />
 
-        <svg height="130" width="160" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="110,5 150,105 85,125 61.5,117" style="fill: lime; stroke: black; stroke-width: 3" />
-        </svg>
+            <label for="tgl_lahir">Tanggal Lahir</label>
+            <input type="date" min="1987-01-01" max="1993-01-01" name="tgl_lahir" required /><br />
+          </fieldset>
+
+          <fieldset>
+            <legend>Permintaan Pertemuan</legend>
+            <label for="tujuan">Tujuan Pertemuan</label>
+            <input type="text" name="tujuan" required /><br />
+
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <label for="kepentingan">Tingkat Kepentingan Pertemuan</label>
+              <input type="range" name="kepentingan" min="0" max="10" />
+              <br />
+            </div>
+
+            <label for="tgl_pertemuan">Tanggal</label>
+            <input type="date" id="tgl_pertemuan" required /><br />
+
+            <label for="waktu"> Waktu</label>
+            <input type="time" name="waktu" min="17:00" max="21:00" required /><br />
+          </fieldset>
+
+          <input type="submit" value="Submit" style="padding: 2px 8px;" />
+        </form>
       </article>
     </section>
 
     <footer>
       <p>&copy; 2024 TI 2A Amro Alfien S.N - Desain & Pemrograman Web</p>
     </footer>
+
+    <script>
+      const tanggal = new Date().toISOString().split("T")[0];
+      console.log(tanggal);
+      document.getElementById("tgl_pertemuan").setAttribute("min", tanggal);
+    </script>
   </body>
 </html>
